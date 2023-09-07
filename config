@@ -1,0 +1,14 @@
+trojan_protocol: trojan
+trojan_link: trojan://2fd6b673-d745-4ef9-b99d-d992f40156f3@fq.example.com:35940?security=tls&type=ws&path=%2F4c12815f-7072-4535-8324-38c84a3be47e#Trojan%E6%B5%8B%E8%AF%95
+trojan_port: 35930-35947
+
+
+vless_protocol: vless
+vless_link: vless://63d3004b-9b1f-4485-a081-260ba1b34b76@fq.example.com:27920?encryption=none&security=tls&type=ws&path=%2F53fa472c-0cdf-4e73-8c1d-228b7eb8c286#Vless%E6%B5%8B%E8%AF%95
+vless_port: 27920-27925
+
+
+vmess_protocol: vmess
+vmess_link: vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIlZNZXNz5rWL6K+VIiwNCiAgImFkZCI6ICJmcS5leGFtcGxlLmNvbSIsDQogICJwb3J0IjogIjEwMjIwIiwNCiAgImlkIjogIjUxYjdmN2U5LTcxNTQtNDNmZi04ZDdiLWRlZmE5ZGVhYmI2ZSIsDQogICJhaWQiOiAiMCIsDQogICJzY3kiOiAiYXV0byIsDQogICJuZXQiOiAid3MiLA0KICAidHlwZSI6ICJub25lIiwNCiAgImhvc3QiOiAiIiwNCiAgInBhdGgiOiAiLzg2M2NkMzdjLTZiMjAtNDk0MS05ZTZlLTc3YjhjZTMyNDA0OCIsDQogICJ0bHMiOiAidGxzIiwNCiAgInNuaSI6ICIiLA0KICAiYWxwbiI6ICIiDQp9
+vmess_port: 10220-10225
+

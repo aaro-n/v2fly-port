@@ -1,0 +1,44 @@
+name: Run App Scripts
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: true
+
+      - name: Set execute permissions
+        run: chmod +x app/*.sh
+
+      - name: Run App Scripts
+        run: |
+          for script in app/*.sh; do
+            ./$script
+          done
+
+      - name: Get last commit message
+        id: commit_message
+        run: echo "::set-output name=message::$(git log -1 --pretty=%B)"
+
+      - name: Set commit timestamp
+        id: commit_timestamp
+        run: echo "::set-output name=timestamp::$(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S Beijing Time')"
+
+      - name: Commit and push changes
+        if: ${{ !github.event.repository.fork }}
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git status
+          commit_message="${{ steps.commit_message.outputs.message }}"
+          timestamp="${{ steps.commit_timestamp.outputs.timestamp }}"
+          git diff-index --quiet HEAD || git commit -m "$commit_message-$timestamp" && git push

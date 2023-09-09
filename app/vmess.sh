@@ -55,6 +55,8 @@ while IFS= read -r line; do
   if [[ $line == "vmess://"* ]]; then
     # 遇到新的 vmess:// 开头的行，将之前的内容整理后写入输出文件
     if [[ -n $vmess_line ]]; then
+      # 清除每一行中的空格
+      vmess_line=$(echo "$vmess_line" | tr -d '[:space:]')
       echo -n "$vmess_line" >> "$output_file"
       echo >> "$output_file"
     fi
@@ -67,6 +69,8 @@ done < "$input_file"
 
 # 处理最后一个 vmess:// 开头的行
 if [[ -n $vmess_line ]]; then
+  # 清除每一行中的空格
+  vmess_line=$(echo "$vmess_line" | tr -d '[:space:]')
   echo -n "$vmess_line" >> "$output_file"
   echo >> "$output_file"
 fi
